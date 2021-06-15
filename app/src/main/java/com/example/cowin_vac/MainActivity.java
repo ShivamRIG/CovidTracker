@@ -1,18 +1,71 @@
 package com.example.cowin_vac;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
-    // Urls of our images.
-    String url1 = "https://images.unsplash.com/photo-1618961734760-466979ce35b0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIzNTg2MDg4&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600";
-    String url2 = "https://images.unsplash.com/flagged/photo-1573823448235-3e7ded467ad3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIzNTg2MTcx&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600";
-    String url3 = "https://images.unsplash.com/photo-1608326389514-d9d2514e1933?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIzNTg2MTYy&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600";
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    EditText ED;
+    Button BTN,BTN2;
+    private int mYear, mMonth, mDay ;
+    private String tem;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ED=(EditText)findViewById(R.id.date);
+        BTN=(Button)findViewById(R.id.btn);
+        BTN.setOnClickListener(this);
+        BTN2=(Button)findViewById(R.id.BTN2);
+        BTN2.setOnClickListener(this);
+
+
+
+    }
+    @Override
+    public void onClick(View v) {
+        if (v == BTN) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+             mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            ED.setText(dayOfMonth + "-" + (monthOfYear ) + "-" + year);
+                            tem=dayOfMonth + "-" + monthOfYear  + "-" +year;
+                        }
+                    }, mYear, mMonth, mDay);
+
+            datePickerDialog.show();
+
+            }
+        if(v==BTN2){
+            Intent inte1 = new Intent(this, SecondActivity.class);
+            inte1.putExtra("date",tem);
+            startActivity(inte1);
+
+        }
+
 
 
     }
