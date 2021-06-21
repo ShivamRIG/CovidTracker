@@ -3,6 +3,7 @@ package com.example.cowin_vac;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         if(v==BTN2){
             Intent inte1 = new Intent(this, SecondActivity.class);
-            inte1.putExtra("date",tem);
+            inte1.putExtra("data",tem);
+            Log.d("map",tem);
             startActivity(inte1);
 
         }
