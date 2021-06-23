@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,19 +26,21 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     TextView Txtv;
     String data;
+    ListView listView;
+    JSONArray jsonArray;
     //String Hos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         data = getIntent().getStringExtra("data");
-        ListView listView =findViewById(R.id.listview);
+         listView =findViewById(R.id.listview);
         ArrayList<String> info=new ArrayList<>();
         ArrayAdapter<String> arrayAdapter=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,info);
-
+        listView.setOnItemClickListener(this);
         RequestQueue queue;
         queue= Volley.newRequestQueue(this);
         
@@ -47,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONObject jsonObject1 = new JSONObject(response.toString());
-                            JSONArray jsonArray = jsonObject1.getJSONArray("sessions");
+                             jsonArray = jsonObject1.getJSONArray("sessions");
                             Log.d("Json response", "onResponse: "+jsonObject1.toString());
 
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -70,11 +74,15 @@ public class SecondActivity extends AppCompatActivity {
             queue.add(jsonRequest);
 
 
-// Add the request to the RequestQueue.
+    }
 
 
-               // url = new URL("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=363&date=" + data);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    listView.setVisibility(View.INVISIBLE);
+    for (int i=0; i<jsonArray.length();i++){
 
 
+    }
     }
 }
