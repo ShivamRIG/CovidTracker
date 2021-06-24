@@ -3,11 +3,14 @@ package com.example.cowin_vac;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,11 +29,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SecondActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    TextView Txtv;
+public class SecondActivity extends AppCompatActivity implements AdapterView.OnItemClickListener ,View.OnClickListener {
+    TextView Txtv,name,age,vac,fees;
     String data;
     ListView listView;
     JSONArray jsonArray;
+    JSONObject jsonObject;
+    Button btn;
+    Intent intent;
     //String Hos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
         listView.setOnItemClickListener(this);
         RequestQueue queue;
         queue= Volley.newRequestQueue(this);
+
         
 // Request a string response from the provided URL.
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=363&date="+data,null, new Response.Listener<JSONObject>() {
@@ -55,7 +62,7 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
                             Log.d("Json response", "onResponse: "+jsonObject1.toString());
 
                             for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                 jsonObject = jsonArray.getJSONObject(i);
                                 info.add(jsonObject.get("name").toString());
                             }
                             listView.setAdapter(arrayAdapter);
@@ -80,9 +87,56 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     listView.setVisibility(View.INVISIBLE);
+    Txtv =findViewById(R.id.textView8);
+    name= findViewById(R.id.name);
+    age= findViewById(R.id.age);
+    vac= findViewById(R.id.time);
+    fees=findViewById(R.id.fees);
+    btn=findViewById(R.id.find);
+    //visible
+    Txtv.setVisibility(View.VISIBLE);
+    age.setVisibility(View.VISIBLE);
+    name.setVisibility(View.VISIBLE);
+    fees.setVisibility(View.VISIBLE);
+    vac.setVisibility(View.VISIBLE);
+    btn.setVisibility(View.VISIBLE);
+
+
+        String dat = "";
     for (int i=0; i<jsonArray.length();i++){
+        String value = parent.getItemAtPosition(position).toString();
+        try {
+            jsonObject =jsonArray.getJSONObject(i);
+            dat=jsonObject.get("name").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(value.equals(dat)){
+            try {
+                name.setText(jsonObject.get("name").toString());
+                fees.setText(jsonObject.get("fee_type").toString());
+                vac.setText(jsonObject.get("vaccine").toString());
+                age.setText(jsonObject.get("min_age_limit").toString());
+                btn.setOnClickListener(this);
 
 
+            } catch (JSONException e) {
+                Log.d("data", String.valueOf(e));
+            }
+
+
+        }
     }
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            intent=new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.google.com/maps/search/?api=1&query=pune"+jsonObject.get("name").toString()));
+        } catch (JSONException e) {
+            name.setText("error");
+        }
+        startActivity(intent);
     }
 }
