@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,7 +38,7 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
     JSONObject jsonObject;
     Button btn;
     Intent intent;
-    //String Hos;
+    String Name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,12 +132,13 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onClick(View v) {
-        try {
+        if(name.getText()!=null) {
 
-            intent=new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.google.com/maps/search/?api=1&query= pune "+" "+jsonObject.get("address").toString()+" "+jsonObject.get("name").toString()));
-        } catch (JSONException e) {
-            name.setText("error");
+            intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.google.com/maps/search/?api=1&query= pune " + name.getText()));
+        }
+        else{
+        vac.setText("Data not found");
         }
         startActivity(intent);
     }
