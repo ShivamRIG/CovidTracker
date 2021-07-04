@@ -11,20 +11,18 @@
         android:id="@+id/age"
         android:layout_width="158dp"
         android:layout_height="59dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="498dp"
         android:background="#F4F4F4"
         android:text="age"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/fees"
         app:layout_constraintTop_toBottomOf="@+id/time"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -51,8 +49,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="413dp"
-        android:layout_height="458dp"
+        android:layout_width="410dp"
+        android:layout_height="453dp"
         android:layout_marginTop="84dp"
         android:gravity="bottom"
         android:orientation="vertical"
@@ -61,7 +59,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <ListView
             android:id="@+id/listview"
@@ -82,7 +80,6 @@
         android:layout_width="409dp"
         android:layout_height="30dp"
         android:layout_gravity="top"
-        android:layout_marginTop="1dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="Details"
@@ -96,9 +93,10 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
         android:background="#27351A1A"
         android:text="Name"
         android:textAlignment="center"
@@ -106,9 +104,6 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -116,8 +111,7 @@
         android:id="@+id/time"
         android:layout_width="411dp"
         android:layout_height="51dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginBottom="96sp"
+        android:layout_marginTop="8dp"
         android:background="#F4F4F4"
         android:text="time"
         android:textAlignment="center"
@@ -125,19 +119,15 @@
         android:textSize="19sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/fees"
         android:layout_width="146dp"
         android:layout_height="58dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="82dp"
         android:background="#F4F4F4"
         android:text="fees"
         android:textAlignment="center"
@@ -145,17 +135,15 @@
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/age"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="0.961" />
 
     <Button
         android:id="@+id/find"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="126dp"
-        android:layout_height="54dp"
+        android:layout_height="49dp"
         android:gravity="bottom|center"
         android:text="Find"
         android:textAlignment="textStart"
@@ -164,10 +152,10 @@
         app:icon="@drawable/ic_baseline_location_on_24"
         app:iconGravity="end"
         app:iconSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/time"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.0" />
 

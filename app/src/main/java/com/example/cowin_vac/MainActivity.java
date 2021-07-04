@@ -51,9 +51,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
+                            int month=monthOfYear+1;
+                            if (month!=13) {
+                                ED.setText(dayOfMonth + "-" + (month) + "-" + year);
+                                tem = dayOfMonth + "-" + (month) + "-" + year;
+                            }
+                            else {
+                                month=month-1;
+                                ED.setText(dayOfMonth + "-" + (month) + "-" + year);
+                                tem = dayOfMonth + "-" + (month) + "-" + year;
 
-                            ED.setText(dayOfMonth + "-" + (monthOfYear+1)  + "-" + year);
-                            tem=dayOfMonth + "-" + (monthOfYear+1)  + "-" +year;
+                            }
+
                         }
                     }, mYear, mMonth, mDay);
 
