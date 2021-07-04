@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,9 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Get Current Date
             final Calendar c = Calendar.getInstance();
              mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-
-            mDay = c.get(Calendar.DAY_OF_MONTH);
+             mMonth = c.get(Calendar.MONTH);
+             mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            ED.setText(dayOfMonth + "-" + (monthOfYear ) + "-" + year);
-                            tem=dayOfMonth + "-" + monthOfYear  + "-" +year;
+                            ED.setText(dayOfMonth + "-" + (monthOfYear+1)  + "-" + year);
+                            tem=dayOfMonth + "-" + (monthOfYear+1)  + "-" +year;
                         }
                     }, mYear, mMonth, mDay);
 
             datePickerDialog.show();
 
             }
-        if(v==BTN2){
+        if(v==BTN2&&tem!=null){
             Intent inte1 = new Intent(this, SecondActivity.class);
             inte1.putExtra("data",tem);
             Log.d("map",tem);
@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
-
+        }
     }
-}
+

@@ -132,8 +132,9 @@ public class SecondActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onClick(View v) {
         try {
+
             intent=new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.google.com/maps/search/?api=1&query=pune"+jsonObject.get("name").toString()));
+                    Uri.parse("https://www.google.com/maps/search/?api=1&query= pune "+" "+jsonObject.get("address").toString()+" "+jsonObject.get("name").toString()));
         } catch (JSONException e) {
             name.setText("error");
         }
