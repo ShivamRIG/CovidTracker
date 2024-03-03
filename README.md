@@ -78,6 +78,17 @@ Track your COVID-19 vaccination progress with ease using our Android application
 2. Open the project in Android Studio.
 3. Build and run the application on your Android device or emulator.
 
+## Language
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white)  ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+### Connect with Me
+
+Let's stay in touch! Reach out to me on Twitter or via email:
+
+[![Twitter](https://img.shields.io/twitter/follow/shivamSingh80_0?style=social)](https://twitter.com/ShivamSingh80_0)
+[![Email](https://img.shields.io/badge/Email-Contact%20Me-blue)](mailto:shivamsingh8461@outlook.com)
+
+
+
 ## Contributing
 Contributions are welcome! Please feel free to open an issue or submit a pull request with any enhancements or bug fixes.
 
